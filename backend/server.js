@@ -6,7 +6,7 @@ import transactionsRoute from "./routes/transaction.routes.js";
 import rateLimiter from "./middleware/ratelimiter.middleware.js";
 import authRoutes from "./routes/auth.routes.js"
 import { connectRedis } from "./lib/redis.js";
-import job from "./config/cron.js";
+import job from "./lib/cron.js";
 
 
 app.use(rateLimiter)
