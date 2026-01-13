@@ -1,16 +1,9 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
-// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
-// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
-
 generator client {
   provider = "prisma-client-js"
-  // output   = "../generated/prisma"
 }
 
 datasource db {
-  provider = "mysql"
+  provider = "postgresql"
 }
 
 model User {
@@ -28,7 +21,7 @@ model Transaction {
   userId    Int      @map("user_id")
   user      User     @relation(fields: [userId], references: [id])
   title     String
-  amount    Decimal
+  amount    Decimal  @db.Decimal(10, 2)
   category  String
   createdAt DateTime @default(now())
 }
