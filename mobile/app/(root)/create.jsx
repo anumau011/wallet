@@ -16,7 +16,7 @@ import { COLORS } from "../../constants/colors";
 import { Ionicons } from "@expo/vector-icons";
 
 
-const API_URL = "http://192.168.1.40:4000/api"
+const API_URL = "http://192.168.1.40:3000/api"
 
 const CATEGORIES = [
     { id: "food", name: "Food & Drinks", icon: "fast-food" },

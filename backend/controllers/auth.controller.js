@@ -7,7 +7,6 @@ import { sendMail } from "../lib/sendMail.js";
 
 export async function signup(req, res) {
   const { name, email, password } = req.body;
-
   if (!name || !email || !password)
     return res.status(400).json({ message: "All fields required" });
 
@@ -107,7 +106,6 @@ export const verifyUser = async (req, res) => {
 export async function login(req, res) {
   try {
     const { email, password } = req.body;
-
     if (!email || !password) {
       return res.status(400).json({
         message: "All fields required",

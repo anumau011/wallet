@@ -3,7 +3,8 @@ import { useState, useCallback } from "react";
 import { Alert } from "react-native";
 
 // import { API_URL } from "../constants/api";
-const API_URL = "http://192.168.1.40:4000/api";
+// const API_URL = "https://wallet-efxm.onrender.com/api";
+const API_URL = "http://192.168.1.40:3000/api";
 
 export const useTransactions = (userId) => {
   const { userToken } = useAuth();

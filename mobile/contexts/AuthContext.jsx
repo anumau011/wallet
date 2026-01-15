@@ -4,7 +4,8 @@ import { store } from "expo-router/build/global-state/router-store";
 import { sortRoutes } from "expo-router/build/sortRoutes";
 
 const AuthContext = createContext();
-
+// const API_URL = "https://wallet-efxm.onrender.com/api"
+const API_URL = "http://192.168.1.40:3000/api"
 const TOKEN_KEY = "auth_token";
 
 export const AuthProvider = ({ children }) => {
@@ -49,7 +50,7 @@ export const AuthProvider = ({ children }) => {
   const login = async (email, password) => {
     setIsLoginLoading(true);
     try {
-      const res = await fetch("http://192.168.1.40:4000/api/auth/login", {
+      const res = await fetch(`${API_URL}/auth/login`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email, password }),
@@ -74,7 +75,9 @@ export const AuthProvider = ({ children }) => {
   const signup = async (payload) => {
     setIsSignupLoading(true);
     try {
-      const res = await fetch("http://192.168.1.40:4000/api/auth/signup", {
+      console.log(payload,`${API_URL}/auth/signup`)
+
+      const res = await fetch(`${API_URL}/auth/signup`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload),
@@ -99,7 +102,7 @@ export const AuthProvider = ({ children }) => {
     setLoading(true);
     try {
       const payload = { email: pendingEmail, otp }
-      const res = await fetch(`http://192.168.1.40:4000/api/auth/verify-otp`, {
+      const res = await fetch(`${API_URL}/auth/verify-otp`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
