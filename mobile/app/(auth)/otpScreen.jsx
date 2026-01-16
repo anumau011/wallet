@@ -2,7 +2,7 @@ import { View, Text, TextInput, TouchableOpacity, StyleSheet } from "react-nativ
 import { useState } from "react";
 import { useAuth } from "../../contexts/AuthContext";
 import { Redirect, useNavigation } from "expo-router";
-import {styles} from "@/assets/styles/auth.styles.js";
+import { styles } from "@/assets/styles/auth.styles.js";
 
 export default function OtpScreen() {
   const [otp, setOtp] = useState("");
@@ -25,9 +25,9 @@ export default function OtpScreen() {
           maxLength={6}
           placeholder="Enter Your Verification Code"
           placeholderTextColor="#9a8478"
-          style={[
-            styles.verificationInput,
-          ]}
+          style={styles.verificationInput}
+          textAlign="left"
+          writingDirection="ltr"
         />
       </View>
 

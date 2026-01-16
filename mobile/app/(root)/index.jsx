@@ -51,7 +51,7 @@ export default function Index() {
             <View style={styles.welcomeContainer}>
               <Text style={styles.welcomeText}>Welcome,</Text>
               <Text style={styles.usernameText}>
-                Buddy
+                {user.name}
               </Text>
             </View>
           </View>

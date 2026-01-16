@@ -4,21 +4,23 @@ let transporter;
 
 function getTransporter() {
   if (!transporter) {
+    const port = Number(process.env.EMAIL_PORT) || 587; // Default to 587 if missing
+
     transporter = nodemailer.createTransport({
       host: process.env.EMAIL_HOST,
-      port: Number(process.env.EMAIL_PORT),
-      secure: Number(process.env.EMAIL_PORT) === 465,
+      port: port,
+      // Use "true" for 465, "false" for all other ports
+      secure: port === 465, 
       auth: {
         user: process.env.EMAIL_USER,
         pass: process.env.EMAIL_PASS,
       },
-      connectionTimeout: 20_000,
-      greetingTimeout: 20_000,
+      // specific timeout settings to avoid hanging
+      connectionTimeout: 10000, 
     });
   }
   return transporter;
 }
-
 export async function sendMail({ to, subject, text, html }) {
   try {
     const transporter = getTransporter();

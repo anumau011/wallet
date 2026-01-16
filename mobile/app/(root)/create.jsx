@@ -16,7 +16,7 @@ import { COLORS } from "../../constants/colors";
 import { Ionicons } from "@expo/vector-icons";
 
 
-const API_URL = "http://192.168.1.40:3000/api"
+const API_URL = process.env.EXPO_PUBLIC_API_URL;
 
 const CATEGORIES = [
     { id: "food", name: "Food & Drinks", icon: "fast-food" },
@@ -40,6 +40,7 @@ const CreateScreen = () => {
 
     const handleCreate = async () => {
         // validations
+        console.log(API_URL)
         if (!title.trim()) return Alert.alert("Error", "Please enter a transaction title");
         if (!amount || isNaN(parseFloat(amount)) || parseFloat(amount) <= 0) {
             Alert.alert("Error", "Please enter a valid amount");

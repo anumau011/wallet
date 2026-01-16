@@ -5,7 +5,7 @@ import { sortRoutes } from "expo-router/build/sortRoutes";
 
 const AuthContext = createContext();
 // const API_URL = "https://wallet-efxm.onrender.com/api"
-const API_URL = "http://192.168.1.40:3000/api"
+const API_URL = process.env.EXPO_PUBLIC_API_URL;
 const TOKEN_KEY = "auth_token";
 
 export const AuthProvider = ({ children }) => {
@@ -49,6 +49,7 @@ export const AuthProvider = ({ children }) => {
 
   const login = async (email, password) => {
     setIsLoginLoading(true);
+    console.log(API_URL)
     try {
       const res = await fetch(`${API_URL}/auth/login`, {
         method: "POST",
@@ -62,7 +63,6 @@ export const AuthProvider = ({ children }) => {
 
       const { token } = await res.json();
       await SecureStore.setItemAsync(TOKEN_KEY, token);
-
       setUser(decodeJwt(token))
       setUserToken(token)
       setStatus("authenticated");

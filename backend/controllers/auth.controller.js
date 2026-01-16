@@ -94,7 +94,7 @@ export const verifyUser = async (req, res) => {
 
   // 🔹 Remove sensitive fields
   const { password, ...safeUser } = user;
-  const token = generateToken(user.id);
+  const token = generateToken(user.id,user.name);
 
   res.status(201).json({
     message: "Verification successful",
@@ -129,7 +129,7 @@ export async function login(req, res) {
       });
     }
 
-    const token = generateToken(user.id);
+    const token = generateToken(user.id,user.name);
 
     return res.status(200).json({
       success: true,
