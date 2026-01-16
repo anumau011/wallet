@@ -16,6 +16,9 @@ export default function OtpScreen() {
   return (
     <View style={styles.verificationContainer}>
       <Text style={styles.title}>Verify OTP</Text>
+<Text style={{ fontSize: 13, color: "#9a8478", textAlign: "center",marginBottom:10 }}>
+  Didn’t receive the email? Please check your Spam or Junk folder.
+</Text>
 
       <View style={styles.inputContainer}>
         <TextInput
