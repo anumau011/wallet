@@ -1,16 +1,16 @@
-import { Alert, FlatList, Image, RefreshControl, Text, TouchableOpacity, View } from "react-native";
-import { useAuth } from "@/contexts/AuthContext";
-import { useTransactions } from "@/hooks/userTansactions"
-import { useEffect, useState } from "react";
-import { useIsFocused } from "@react-navigation/native";
 import { styles } from "@/assets/styles/home.styles";
-import PageLoader from "@/components/PageLoader"
-import { Ionicons } from "@expo/vector-icons";
+import PageLoader from "@/components/PageLoader";
 import { SignOutButton } from "@/components/SignOutButton";
+import { useAuth } from "@/contexts/AuthContext";
+import { useTransactions } from "@/hooks/userTansactions";
+import { Ionicons } from "@expo/vector-icons";
+import { useIsFocused } from "@react-navigation/native";
+import { useRouter } from "expo-router";
+import { useEffect, useState } from "react";
+import { Alert, FlatList, Image, RefreshControl, Text, TouchableOpacity, View } from "react-native";
 import { BalanceCard } from "../../components/BalanceCard";
-import { TransactionItem } from "../../components/TransactionItem";
 import NoTransactionsFound from "../../components/NoTransactionsFound";
-import { Link, useRouter } from "expo-router";
+import { TransactionItem } from "../../components/TransactionItem";
 
 export default function Index() {
   const { user, logout } = useAuth();
