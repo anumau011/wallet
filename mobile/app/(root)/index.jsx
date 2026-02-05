@@ -2,6 +2,7 @@ import { Alert, FlatList, Image, RefreshControl, Text, TouchableOpacity, View } 
 import { useAuth } from "@/contexts/AuthContext";
 import { useTransactions } from "@/hooks/userTansactions"
 import { useEffect, useState } from "react";
+import { useIsFocused } from "@react-navigation/native";
 import { styles } from "@/assets/styles/home.styles";
 import PageLoader from "@/components/PageLoader"
 import { Ionicons } from "@expo/vector-icons";
@@ -14,12 +15,15 @@ import { Link, useRouter } from "expo-router";
 export default function Index() {
   const { user, logout } = useAuth();
   const router = useRouter();
+  const isFocused = useIsFocused();
   const { transactions, summary, isLoading, loadData, deleteTransaction } = useTransactions(user.id)
   const [refreshing, setRefreshing] = useState(false);
 
   useEffect(() => {
-    loadData()
-  }, [loadData]);
+    if (isFocused) {
+      loadData();
+    }
+  }, [isFocused, loadData]);
 
   const onRefresh = async () => {
     setRefreshing(true);
@@ -65,7 +69,7 @@ export default function Index() {
           </View>
         </View>
 
-        {/* <BalanceCard summary={summary} /> */}
+        <BalanceCard summary={summary} />
 
         <View style={styles.transactionsHeaderContainer}>
           <Text style={styles.sectionTitle}>Recent Transactions</Text>

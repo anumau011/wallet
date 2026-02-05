@@ -2,6 +2,9 @@ import { Stack } from "expo-router";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 import SafeScreen from "@/components/SafeScreen";
 import { View, Text,ActivityIndicator } from "react-native";
+import { StatusBar } from 'expo-status-bar';
+
+
 import { Slot,Redirect} from "expo-router";
 import { AuthProvider, useAuth } from "@/contexts/AuthContext"
 
@@ -10,6 +13,7 @@ export default function RootLayout() {
   return (
     <AuthProvider>
       <SafeScreen>
+        <StatusBar style="auto"/>
         <AuthGate />
       </SafeScreen>
     </AuthProvider>
